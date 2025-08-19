@@ -1,96 +1,37 @@
 import React from "react";
-import { Image, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import favicon from "../assets/favicon.png";
-import { ScrollView } from "react-native";
 const ImageExample = () => {
   return (
-    <ScrollView>
-      <View>
-        <Image
-          style={{
-            width: 200,
-            height: 200,
-          }}
-          source={{
-            uri: "https://upload.wikimedia.org/wikipedia/commons/4/47/React.svg",
-          }}
-          loadingIndicatorSource={favicon}
-          resizeMode="center"
-        />
+    <View>
+      <Image
+        style={styles.image}
+        source={{
+          uri: "https://upload.wikimedia.org/wikipedia/commons/4/47/React.svg",
+        }}
+        loadingIndicatorSource={favicon}
+        resizeMode="center"
+      />
 
-        <Image
-          style={{
-            width: 200,
-            height: 200,
-          }}
-          source={favicon}
-        />
-      </View>
-      <View>
-        <Image
-          style={{
-            width: 200,
-            height: 200,
-          }}
-          source={{
-            uri: "https://upload.wikimedia.org/wikipedia/commons/4/47/React.svg",
-          }}
-          loadingIndicatorSource={favicon}
-          resizeMode="center"
-        />
-
-        <Image
-          style={{
-            width: 200,
-            height: 200,
-          }}
-          source={favicon}
-        />
-      </View>
-      <View>
-        <Image
-          style={{
-            width: 200,
-            height: 200,
-          }}
-          source={{
-            uri: "https://upload.wikimedia.org/wikipedia/commons/4/47/React.svg",
-          }}
-          loadingIndicatorSource={favicon}
-          resizeMode="center"
-        />
-
-        <Image
-          style={{
-            width: 200,
-            height: 200,
-          }}
-          source={favicon}
-        />
-      </View>
-      <View>
-        <Image
-          style={{
-            width: 200,
-            height: 200,
-          }}
-          source={{
-            uri: "https://upload.wikimedia.org/wikipedia/commons/4/47/React.svg",
-          }}
-          loadingIndicatorSource={favicon}
-          resizeMode="center"
-        />
-
-        <Image
-          style={{
-            width: 200,
-            height: 200,
-          }}
-          source={favicon}
-        />
-      </View>
-    </ScrollView>
+      <Image
+        style={styles.image}
+        source={favicon}
+      />
+    </View>
   );
 };
 
 export default ImageExample;
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: "pink",
+        marginTop: 50,
+    },
+    image: {
+        width: 200,
+        height: 200,
+        borderWidth: 2,
+        borderColor: "blue",
+    },
+})

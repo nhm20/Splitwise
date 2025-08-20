@@ -1,11 +1,11 @@
-import {StatusBar, View } from "react-native";
-import SectionListExample from "./SectionList";
+import { StatusBar, Text, View } from "react-native";
+import ModalExample from "./ModalExample";
 
 export default function App() {
   return (
     <View style={{ width: "100%" }}>
-      <StatusBar hidden barStyle="dark-content" />
-      <SectionListExample />
+      <ModalExample />
+      <Text>Hello from App!</Text>
     </View>
   );
 }

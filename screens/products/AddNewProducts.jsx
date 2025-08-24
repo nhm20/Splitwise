@@ -1,15 +1,31 @@
 import { Text, View } from "react-native";
 import { Button, TextInput } from "react-native-web";
-
+import * as ImagePicker from "expo-image-picker";
 const AddNewProducts = () => {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const handleAddProduct = () => {
-    
+
+  const handleAddProduct = () => {};
+  const pickImage = async () => {
+    const permissionResult =
+      await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (!permissionResult.granted) {
+      return;
+    }
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
   };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Add New Product</Text>
@@ -46,13 +62,18 @@ const AddNewProducts = () => {
         onChangeText={setCategory}
         style={styles.input}
       />
-    <Button title="Add Product" onPress={handleAddProduct} />
+
+      <Button icon="camera"
+       
+        onPress={pickImage} > Take image </Button>
+      {image && <Image source={{ uri: image }} style={styles.image} />}
+
+      <Button title="Add Product" onPress={handleAddProduct} />
     </View>
   );
 };
 
 export default AddNewProducts;
-
 
 const styles = StyleSheet.create({
   container: {

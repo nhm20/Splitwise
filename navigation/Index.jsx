@@ -15,9 +15,12 @@ const Navigation = () => {
 const Stack = createNativeStackNavigator();
 const StackNavigatorContainer = () => {
   return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Profile" component={Profile} />
+    <Stack.Navigator screenOptions={{
+      headerShown: true, headerBackground: "#f4511e",
+      headerTitle:"My App"
+    }} initialRouteName="Home">
+      <Stack.Screen  name="Home" component={Home} />
+      <Stack.Screen options={{ headerBackVisible: false }} name="Profile" component={Profile} />
       <Stack.Screen name="User" component={User} />
     </Stack.Navigator>
   );

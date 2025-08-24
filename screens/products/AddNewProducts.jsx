@@ -1,6 +1,8 @@
 import { Text, View } from "react-native";
 import { Button, TextInput } from "react-native-web";
 import * as ImagePicker from "expo-image-picker";
+import { useEffect } from "react";
+import { init } from "../../db/database";
 const AddNewProducts = () => {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
@@ -25,6 +27,16 @@ const AddNewProducts = () => {
       setImage(result.assets[0].uri);
     }
   };
+
+  useEffect(() => {
+    init()
+      .then((data) => {
+        console.log("Database initialized");
+      })
+      .catch((err) => {
+        console.error("Error initializing database:", err);
+      });
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -63,9 +75,10 @@ const AddNewProducts = () => {
         style={styles.input}
       />
 
-      <Button icon="camera"
-       
-        onPress={pickImage} > Take image </Button>
+      <Button icon="camera" onPress={pickImage}>
+        {" "}
+        Take image{" "}
+      </Button>
       {image && <Image source={{ uri: image }} style={styles.image} />}
 
       <Button title="Add Product" onPress={handleAddProduct} />

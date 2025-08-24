@@ -1,11 +1,11 @@
 import { Text, View } from "react-native";
 
-const Profile = () => {
+const MenuScreen = () => {
   return (
     <View>
-      <Text>Profile Screen</Text>
+      <Text>Menu</Text>
     </View>
   );
 };
 
-export default Profile;
+export default MenuScreen;

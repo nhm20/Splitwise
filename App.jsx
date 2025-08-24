@@ -31,3 +31,9 @@ export default function App() {
       </ThemeProvider>
   );
 }
+
+// npm in -g eas-cli
+
+// eas login
+
+//  eas build  

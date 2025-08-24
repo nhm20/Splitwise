@@ -3,7 +3,7 @@ import Home from "../screens/Home.jsx";
 import Profile from "../screens/Profile.jsx";
 import User from "../screens/User.jsx";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
+import { Text } from "react-native";
 const Navigation = () => {
   return (
     <NavigationContainer>
@@ -15,14 +15,40 @@ const Navigation = () => {
 const Tab = createBottomTabNavigator();
 const TabNavContainer = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: "tomato",
+        tabBarInactiveTintColor: "gray",
+      }}
+    >
       <Tab.Screen
-        screenOptions={{ headerShown: false }}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Text style={{ color, fontSize: 20 }}>🏠</Text>
+          ),
+        }}
         name="Home"
         component={Home}
       />
-      <Tab.Screen name="Profile" component={Profile} />
-      <Tab.Screen name="User" component={User} />
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Text style={{ color, fontSize: 20 }}>👤</Text>
+          ),
+        }}
+        name="Profile"
+        component={Profile}
+      />
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Text style={{ color, fontSize: 20 }}>⚙️</Text>
+          ),
+        }}
+        name="User"
+        component={User}
+      />
     </Tab.Navigator>
   );
 };

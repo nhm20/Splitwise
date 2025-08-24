@@ -2,27 +2,28 @@ import { NavigationContainer } from "@react-navigation/native";
 import Home from "../screens/Home.jsx";
 import Profile from "../screens/Profile.jsx";
 import User from "../screens/User.jsx";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <StackNavigatorContainer />
+      <TabNavContainer />
     </NavigationContainer>
   );
 };
 
-const Stack = createNativeStackNavigator();
-const StackNavigatorContainer = () => {
+const Tab = createBottomTabNavigator();
+const TabNavContainer = () => {
   return (
-    <Stack.Navigator screenOptions={{
-      headerShown: true, headerBackground: "#f4511e",
-      headerTitle:"My App"
-    }} initialRouteName="Home">
-      <Stack.Screen  name="Home" component={Home} />
-      <Stack.Screen options={{ headerBackVisible: false }} name="Profile" component={Profile} />
-      <Stack.Screen name="User" component={User} />
-    </Stack.Navigator>
+    <Tab.Navigator>
+      <Tab.Screen
+        screenOptions={{ headerShown: false }}
+        name="Home"
+        component={Home}
+      />
+      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="User" component={User} />
+    </Tab.Navigator>
   );
 };
 export default Navigation;

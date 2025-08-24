@@ -10,7 +10,20 @@ const AddNewProducts = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
 
-  const handleAddProduct = () => {};
+  const handleAddProduct = () => {
+    dispatchEvent(
+      CREATE_PRODUCT_THUNK({
+        id: Date.now().toString(),
+        name,
+        image,
+        price,
+        description,
+        category,
+        lat: 100.0,
+        lng: 0.0,
+      })
+    );
+  };
   const pickImage = async () => {
     const permissionResult =
       await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -27,6 +40,8 @@ const AddNewProducts = () => {
       setImage(result.assets[0].uri);
     }
   };
+
+  
 
   useEffect(() => {
     init()
@@ -82,6 +97,7 @@ const AddNewProducts = () => {
       {image && <Image source={{ uri: image }} style={styles.image} />}
 
       <Button title="Add Product" onPress={handleAddProduct} />
+      <Button title="Submit" onPress={handleAddProduct} />
     </View>
   );
 };

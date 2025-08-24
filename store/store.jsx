@@ -4,6 +4,10 @@ import { productsSlice } from "./products-slice";
 const store = configureStore({
     reducer: {
         products: productsSlice.reducer
-    }
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false
+        })
 })
 export default store;
